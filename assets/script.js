@@ -28,4 +28,20 @@ const quizQuestions = [
     }
 ];
 
+//Variables
+let currentQuestion = 0;
+let score = 0;
+let timeLeft = 0;
+let timerInterval;
+
+//DOM Elements
+const startButton = document.getElementById("start");
+const questionElement = document.getElementById("question");
+const optionsContainer = document.getElementById("options");
+const feedBackElement = document.getElementById("feedback");
+const scoreElement = document.getElementById("score");
+const initialsInput = document.getElementById("initials");
+const scoreForm = document.getElementById("score-form");
+const timerElement = document.getElementById("time");
+
 
