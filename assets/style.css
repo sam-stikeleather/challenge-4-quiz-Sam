@@ -1,0 +1,66 @@
+body {
+    background-color: gray;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(210, 81, 7);
+}
+
+h2 {
+    color: darkgreen;
+}
+
+#quiz {
+    display: none;
+}
+
+#question {
+    margin-top: 0;
+}
+
+#options {
+    margin-top: 20px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#feedback {
+    margin-top: 20px;
+}
+
+#Game-Over {
+    display: none;
+}
+
+#score-form {
+    margin-top: 20px;
+}
+
+#timer {
+    margin-top: 20px;
+}
+
+#time {
+    color: darkgreen;
+}
+
+#start {
+    font-size: 17px;
+    padding: 10px 20px;
+}
