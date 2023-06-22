@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Welcome to the quiz!</h1>
+        <div id="quiz">
+            <h2>Question</h2>
+            <div id="choices">
+                <button class="option"></button>
+                <button class="option"></button>
+                <button class="option"></button>
+                <button class="option"></button>
+            </div>
+            <p id="feedback"></p>
+        </div>
+        <div id="Game-Over">
+            <h2>Game Over!</h2>
+            <p>Your Score: <span id="score"></span></p>
+            <form id="score-form">
+                <label for="initials">Enter your initials:</label>
+                <input type="text" id="initials" maxlength="3" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="timer">
+            <span id="time">0</span> seconds left
+        </div>
+        <button id="start">Begin</button>
+    </div>
     
     <script src="/assets/script.js"></script>
 </body>
