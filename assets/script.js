@@ -60,3 +60,74 @@ function startQuiz() {
     showQuiz();
 }
 
+function showQuiz() {
+    document.getElementById("quiz").style.display = "block";
+}
+
+function showQuestion() {
+    const question = quizQuestions[currentQuestion];
+    questionElement.textContent = question.question;
+    optionsContainer.innerHTML = "";
+    for (let i = 0; i < question.options.length; i++) {
+        const optionButton = document.createElement("button");
+        optionButton.classList.add("option");
+        optionButton.textContent = question.options[i];
+        optionsContainer.appendChild(optionButton); 
+    }
+}
+
+function checkAnswer(event) {
+    if (event.target.classList.contains("option")) {
+      const selectedOption = event.target;
+      const question = quizQuestions[currentQuestion];
+      const selectedAnswer = Array.from(optionsContainer.children).indexOf(selectedOption);
+      const isCorrect = selectedAnswer === question.answer;
+  
+      if (isCorrect) {
+        score++;
+        feedbackElement.textContent = "Correct!";
+      } else {
+        timeLeft -= 10;
+        feedbackElement.textContent = "Wrong!";
+      }
+  
+      currentQuestion++;
+      if (currentQuestion < quizQuestions.length) {
+        showQuestion();
+      } else {
+        endQuiz();
+      }
+    }
+  }
+  
+  function endQuiz() {
+    clearInterval(timerInterval);
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("game-over").style.display = "block";
+    scoreElement.textContent = score;
+  }
+  
+  function startTimer() {
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+  
+      if (timeLeft <= 0) {
+        endQuiz();
+      }
+    }, 1000);
+  }
+  
+  function saveScore(event) {
+    event.preventDefault();
+    const initials = initialsInput.value.trim();
+  
+    if (initials) {
+      // Save the initials and score here
+      console.log("Initials:", initials);
+      console.log("Score:", score);
+      // You can store the scores using local storage or send them to a server
+      // Example: localStorage.setItem("highScores", JSON.stringify({ initials, score }));
+    }
+  }
+  
