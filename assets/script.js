@@ -45,3 +45,18 @@ const scoreForm = document.getElementById("score-form");
 const timerElement = document.getElementById("time");
 
 
+//Event listeners
+startButton.addEventListener("click", startQuiz);
+optionsContainer.addEventListener("click", checkAnswer);
+scoreForm.addEventListener("submit", saveScore);
+
+// Functions
+function startQuiz() {
+    startButton.style.display = "none";
+    timeLeft = 60;
+    score = 0;
+    showQuestion();
+    startTimer();
+    showQuiz();
+}
+
