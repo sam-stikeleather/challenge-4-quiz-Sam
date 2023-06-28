@@ -77,28 +77,59 @@ function showQuestion() {
 }
 
 function checkAnswer(event) {
-    if (event.target.classList.contains("option")) {
-      const selectedOption = event.target;
-      const question = quizQuestions[currentQuestion];
-      const selectedAnswer = Array.from(optionsContainer.children).indexOf(selectedOption);
-      const isCorrect = selectedAnswer === question.answer;
-  
-      if (isCorrect) {
-        score++;
-        feedbackElement.textContent = "Correct!";
-      } else {
-        timeLeft -= 10;
-        feedbackElement.textContent = "Wrong!";
-      }
-  
+  // Check if an option button is clicked
+  if (event.target.classList.contains("option")) {
+    const selectedOption = event.target;
+    const question = quizQuestions[currentQuestion];
+    // Get the index of the selected answer
+    const selectedAnswer = Array.from(optionsContainer.children).indexOf(selectedOption);
+    // Check if the answer is correct
+    const isCorrect = selectedAnswer === question.answer;
+
+    if (isCorrect) {
+      // Increase the score and display feedback
+      score++;
+      feedbackElement.textContent = "Correct!";
+      // Move to the next question
       currentQuestion++;
       if (currentQuestion < quizQuestions.length) {
         showQuestion();
       } else {
+        // End the quiz if all questions are answered
         endQuiz();
       }
+    } else {
+      // Decrease time and display feedback
+      timeLeft -= 10;
+      feedbackElement.textContent = "Wrong!";
     }
   }
+}
+
+
+// function checkAnswer(event) {
+//     if (event.target.classList.contains("option")) {
+//       const selectedOption = event.target;
+//       const question = quizQuestions[currentQuestion];
+//       const selectedAnswer = Array.from(optionsContainer.children).indexOf(selectedOption);
+//       const isCorrect = selectedAnswer === question.answer;
+  
+//       if (isCorrect) {
+//         score++;
+//         feedbackElement.textContent = "Correct!";
+//       } else {
+//         timeLeft -= 10;
+//         feedbackElement.textContent = "Wrong!";
+//       }
+  
+//       currentQuestion++;
+//       if (currentQuestion < quizQuestions.length) {
+//         showQuestion();
+//       } else {
+//         endQuiz();
+//       }
+//     }
+//   }
   
   function endQuiz() {
     clearInterval(timerInterval);
@@ -125,9 +156,8 @@ function checkAnswer(event) {
     if (initials) {
       // Save the initials and score here
       console.log("Initials:", initials);
-      console.log("Score:", score);
-      // You can store the scores using local storage or send them to a server
-      // Example: localStorage.setItem("highScores", JSON.stringify({ initials, score }));
+      console.log("Score:", score)
+      localStorage.setItem("highScores", JSON.stringify({ initials, score }));
     }
   }
   
